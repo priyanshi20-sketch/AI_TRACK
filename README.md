@@ -1,3 +1,18 @@
+# AI Track - InteractionLogger
+
+## Overview
+The `InteractionLogger` is a Solidity smart contract designed to log user interactions on the Ethereum blockchain. Each interaction is recorded with the user's address and the timestamp when the interaction occurred. This contract enables transparent and immutable logging of user activities.
+
+## Features
+- Logs user interactions with their Ethereum address and timestamp.
+- Stores interactions on-chain in an array.
+- Emits an event (`InteractionLogged`) whenever an interaction is recorded.
+- Allows retrieval of specific interactions by index.
+- Provides the total number of logged interactions.
+
+## Smart Contract
+### Contract Name: `InteractionLogger`
+```solidity
 pragma solidity ^0.8.0;
 
 contract InteractionLogger {
@@ -25,3 +40,32 @@ contract InteractionLogger {
         return interactions.length;
     }
 }
+```
+
+## Functions
+### `logInteraction()`
+- Records the caller's address and the current timestamp.
+- Stores the interaction in an array.
+- Emits an `InteractionLogged` event.
+
+### `getInteraction(uint256 index)`
+- Retrieves an interaction at the specified index.
+- Returns the user's address and timestamp.
+- Requires that the provided index is within bounds.
+
+### `getTotalInteractions()`
+- Returns the total number of logged interactions.
+
+## Deployment
+1. Compile the contract using Solidity 0.8.0 or later.
+2. Deploy it to an Ethereum-compatible blockchain.
+3. Use a web3-enabled interface (e.g., Hardhat, Truffle, Remix, or Web3.js) to interact with the contract.
+
+## Usage
+- Users call `logInteraction()` to register their interaction.
+- Any user can view past interactions using `getInteraction(index)`.
+- The total number of interactions can be retrieved using `getTotalInteractions()`.
+
+## License
+This project is open-source and available under the MIT License.
+
